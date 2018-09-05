@@ -3,6 +3,7 @@ package com.raoj.news.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.oubowu.slideback.ActivityHelper;
 import com.socks.library.KLog;
 import com.squareup.leakcanary.BuildConfig;
 import com.squareup.leakcanary.LeakCanary;
@@ -22,7 +23,7 @@ public class App extends Application {
 
     private static Context sApplicationContext;
 
-
+    private ActivityHelper mActivityHelper;
 
     @Override
     public void onCreate() {
@@ -35,6 +36,15 @@ public class App extends Application {
 
         //日志工具初始化
         KLog.init(BuildConfig.DEBUG);
+    }
+
+    public static ActivityHelper getActivityHelper() {
+        return ((App)sApplicationContext).mActivityHelper;
+    }
+
+    // 获取ApplicationContext
+    public static Context getContext() {
+        return sApplicationContext;
     }
     
 }
